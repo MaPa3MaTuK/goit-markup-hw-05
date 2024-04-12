@@ -93,6 +93,7 @@ address {
 }
 
 .header-item {
+  position: relative;
   margin-right: 50px;
 }
 
@@ -113,6 +114,17 @@ address {
 
 .header-link.current {
   color: var(--buttom-color-1);
+}
+
+.header-link.current::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 4px;
+  background-color: var(--buttom-color-1);
+  left: 0;
+  bottom: 0;
+  border-radius: 2px;
 }
 
 .logo-black {
@@ -350,6 +362,29 @@ address {
 
 .metier-photo:last-child {
   margin-right: 0;
+}
+
+.metier-thumb {
+  position: relative;
+}
+
+.metier-descr {
+  position: absolute;
+
+  width: 100%;
+  height: 70px;
+  bottom: 0;
+  left: 0;
+
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(47, 48, 58, 0.8);
+
+  padding-top: 27px;
+  padding-bottom: 27px;
 }
 
 /**
@@ -667,10 +702,35 @@ address {
   flex-basis: calc((100% - 60px) / 3);
 }
 
+.project-thumb {
+  position: relative;
+}
+
+.project-descr {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: 63px 24px;
+
+  font-size: 18px;
+  line-height: 1.55556;
+  color: #fff;
+  background-color: rgba(33, 150, 243, 0.9);
+
+  opacity: 0;
+}
+
 .project-item:hover,
 .project-item:focus {
   box-shadow: 1px 4px 6px 0 rgba(0, 0, 0, 0.16), 0 4px 4px 0 rgba(0, 0, 0, 0.06),
     0 1px 1px 0 rgba(0, 0, 0, 0.12);
+}
+
+.project-item:hover .project-descr,
+.project-item:focus .project-descr {
+  opacity: 1;
 }
 
 .project-item {
@@ -704,4 +764,60 @@ address {
   line-height: 1.8;
   letter-spacing: 0.03em;
   color: var(--third-color);
+}
+
+/**
+|====================
+| Backdrop + modal 
+|====================
+*/
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.backdrop.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  border-radius: 4px;
+  width: 528px;
+  height: 581px;
+
+  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  background: #fff;
+}
+
+.btn-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.icon-close {
+  fill: black;
 }
